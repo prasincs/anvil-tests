@@ -5,6 +5,14 @@ Quick tests to validate anvil works with `debug_traceTransaction` - I may add mo
 I followed instructions here to get a tx and passed this as argument
 https://book.getfoundry.sh/tutorials/forking-mainnet-with-cast-anvil
 
+gas is uint64 without using calltracer
+```
+curl -H "Content-Type: application/json" --data '{"method":"debug_traceTransaction","params":["0x472c87f813e096d9cd501754a9d0f95c3660e255b1a17702fac5af542fe70f69"], "id":1,"jsonrpc":"2.0"}' http://localhost:8545
+{"jsonrpc":"2.0","id":1,"result":{"failed":false,"gas":51830,"returnValue":"0000000000000000000000000000000000000000000000000000000000000001","structLogs":[]}}
+```
+
+for calltracer gas is hex
+
 ```
 go run main.go 0x472c87f813e096d9cd501754a9d0f95c3660e255b1a17702fac5af542fe70f69
 (main.CallTracerResult) {
